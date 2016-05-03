@@ -1,6 +1,8 @@
 # all-async
 exploring async options
 
+slides [here](https://github.com/mccraigmccraig/all-async/blob/master/all-async.pdf)
+
 ## running the code
 ```
 lein dev
