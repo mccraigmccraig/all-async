@@ -54,7 +54,8 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (encode-error-handler promise-unreliable-handler)}}})))
+                     :response (encode-error-handler
+                                promise-unreliable-handler)}}})))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -69,4 +70,5 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (encode-error-handler promise-unreliable-flow-handler)}}})))
+                     :response (encode-error-handler
+                                promise-unreliable-flow-handler)}}})))

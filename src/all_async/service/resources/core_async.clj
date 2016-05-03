@@ -35,8 +35,10 @@
 (defn reliable-upstream-handler
   [ctx]
   (go
-    (let [rn (<! (http-get-with-core-async "http://localhost:3000/api/reliable-random-number"))
-          rl (<! (http-get-with-core-async "http://localhost:3000/api/reliable-random-letter"))]
+    (let [rn (<! (http-get-with-core-async
+                  "http://localhost:3000/api/reliable-random-number"))
+          rl (<! (http-get-with-core-async
+                  "http://localhost:3000/api/reliable-random-letter"))]
       [:ok [rn rl]])))
 
 (defn core-async-resource
@@ -51,8 +53,10 @@
 (defn unreliable-upstream-handler
   [ctx]
   (go
-    (let [rn (<! (http-get-with-core-async "http://localhost:3000/api/unreliable-random-number"))
-          rl (<! (http-get-with-core-async "http://localhost:3000/api/unreliable-random-letter"))]
+    (let [rn (<! (http-get-with-core-async
+                  "http://localhost:3000/api/unreliable-random-number"))
+          rl (<! (http-get-with-core-async
+                  "http://localhost:3000/api/unreliable-random-letter"))]
       (cond
         (not (or (instance? Exception rn)
                  (instance? Exception rl)))

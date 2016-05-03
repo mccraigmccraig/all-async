@@ -44,14 +44,16 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (unreliable-handler random-number-handler)}}})))
+                     :response (unreliable-handler
+                                random-number-handler)}}})))
 
 (defn slow-random-number-resource
   []
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (slow-handler random-number-handler)}}})))
+                     :response (slow-handler
+                                random-number-handler)}}})))
 
 (defn random-letter-handler
   [ctx]
@@ -72,4 +74,5 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (unreliable-handler random-letter-handler)}}})))
+                     :response (unreliable-handler
+                                random-letter-handler)}}})))

@@ -9,7 +9,9 @@
   [handler]
   (fn [ctx]
     (let [r (d/deferred)
-          on-success (fn [v] (d/success! r (generate-string v)))
+          on-success (fn [v] (d/success!
+                              r
+                              (generate-string v)))
           on-error (fn [e] (d/error! r e))]
       (handler on-success on-error)
       r)))
@@ -38,7 +40,8 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (callback-handler reliable-upstream-handler)}}})))
+                     :response (callback-handler
+                                reliable-upstream-handler)}}})))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -58,4 +61,5 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (callback-handler unreliable-upstream-handler)}}})))
+                     :response (callback-handler
+                                unreliable-upstream-handler)}}})))

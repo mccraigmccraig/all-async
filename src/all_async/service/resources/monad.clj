@@ -39,8 +39,10 @@
 (defn monad-handler
   [ctx]
   (with-context deferred-context
-    (mlet [r1 (http-get-promise-monad "http://localhost:3000/api/reliable-random-number")
-           r2 (http-get-promise-monad "http://localhost:3000/api/reliable-random-letter")]
+    (mlet [r1 (http-get-promise-monad
+               "http://localhost:3000/api/reliable-random-number")
+           r2 (http-get-promise-monad
+               "http://localhost:3000/api/reliable-random-letter")]
       (return [r1 r2]))))
 
 (defn monad-resource
@@ -55,8 +57,10 @@
 (defn monad-unreliable-handler
   [ctx]
   (with-context deferred-context
-    (mlet [r1 (http-get-promise-monad "http://localhost:3000/api/unreliable-random-number")
-           r2 (http-get-promise-monad "http://localhost:3000/api/unreliable-random-letter")]
+    (mlet [r1 (http-get-promise-monad
+               "http://localhost:3000/api/unreliable-random-number")
+           r2 (http-get-promise-monad
+               "http://localhost:3000/api/unreliable-random-letter")]
       (return [r1 r2]))))
 
 (defn monad-unreliable-resource
@@ -64,7 +68,8 @@
   (yada
    (resource
     {:methods {:get {:produces #{"application/json"}
-                     :response (encode-error-handler monad-unreliable-handler)}}})))
+                     :response (encode-error-handler
+                                monad-unreliable-handler)}}})))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -103,8 +108,10 @@
 (defn monad-unreliable-log-handler
   [ctx]
   (with-context deferred-writer-context
-    (mlet [r1 (http-get-log-promise "http://localhost:3000/api/unreliable-random-number")
-           r2 (http-get-log-promise "http://localhost:3000/api/unreliable-random-letter")]
+    (mlet [r1 (http-get-log-promise
+               "http://localhost:3000/api/unreliable-random-number")
+           r2 (http-get-log-promise
+               "http://localhost:3000/api/unreliable-random-letter")]
       (return [r1 r2]))))
 
 (defn monad-unreliable-log-resource
@@ -131,8 +138,10 @@
 (defn monad-slow-handler
   [ctx]
   (with-context deferred-context
-    (mlet [r1 (http-get-promise-monad "http://localhost:3000/api/slow-random-number")
-           r2 (http-get-promise-monad "http://localhost:3000/api/slow-random-number")]
+    (mlet [r1 (http-get-promise-monad
+               "http://localhost:3000/api/slow-random-number")
+           r2 (http-get-promise-monad
+               "http://localhost:3000/api/slow-random-number")]
       (return [r1 r2]))))
 
 (defn monad-slow-resource
@@ -149,8 +158,10 @@
 (defn applicative-slow-handler
   [ctx]
   (with-context deferred-context
-    (alet [r1 (http-get-promise-monad "http://localhost:3000/api/slow-random-number")
-           r2 (http-get-promise-monad "http://localhost:3000/api/slow-random-number")]
+    (alet [r1 (http-get-promise-monad
+               "http://localhost:3000/api/slow-random-number")
+           r2 (http-get-promise-monad
+               "http://localhost:3000/api/slow-random-number")]
       [r1 r2])))
 
 (defn applicative-slow-resource
