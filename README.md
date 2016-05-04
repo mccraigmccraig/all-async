@@ -17,3 +17,12 @@ lein repl :connect localhost:7888
 ```
  (bounce.core/reload!)
 ```
+
+## accessing the api examples
+```
+http://localhost:3000/api/callback
+http://localhost:3000/api/monad-unreliable-log
+
+```
+
+etc... all the api routes are defined in `all-async.service.api`
